@@ -1,7 +1,6 @@
 import express from "express";
 import Thread from "../models/Thread.js";
-//import getOpenAIAPIResponse from "../utils/openai.js";
-import { getGeminiResponse } from "../utils/gemini.js";
+import { getAIResponse } from "../utils/response.js";
 
 const router = express.Router();
 
@@ -89,8 +88,7 @@ router.post("/chat", async(req, res) => {
             thread.messages.push({role: "user", content: message});
         }
 
-        //const assistantReply = await getOpenAIAPIResponse(message);
-        const assistantReply = await getGeminiResponse(message);
+        const assistantReply = await getAIResponse(message);
 
         thread.messages.push({role: "assistant", content: assistantReply || "No reply" });
         thread.updatedAt = new Date();

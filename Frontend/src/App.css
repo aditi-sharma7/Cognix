@@ -9,7 +9,6 @@ body {
 }
 
 .app {
-    /* height: 100vh; */
     background-color: #212121;
     display: flex;
     overflow: hidden;
