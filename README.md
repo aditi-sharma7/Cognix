@@ -1,2 +1,2 @@
 # Cognix 
-A MERN based ChatGPT replica implemented from scratch using OpenAI.
+A MERN based ChatGPT replica implemented from scratch using Cohere.
