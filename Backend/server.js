@@ -8,7 +8,20 @@ const app = express();
 const PORT = process.env.PORT || 8080;
 
 app.use(express.json());
-app.use(cors());
+const allowedOrigins = [
+  "http://localhost:5173", // local frontend
+  "https://cognix-ai-assistant.onrender.com" // deployed frontend
+];
+
+app.use(cors({
+  origin: function(origin, callback) {
+    if (!origin || allowedOrigins.includes(origin)) {
+      callback(null, true);
+    } else {
+      callback(new Error("Not allowed by CORS"));
+    }
+  }
+}));
 
 app.use("/api", chatRoutes);
 
